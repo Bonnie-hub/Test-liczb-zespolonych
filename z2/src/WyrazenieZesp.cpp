@@ -11,19 +11,19 @@ void Wyswietl(WyrazenieZesp  WyrZ)
 
     switch(WyrZ.Op)
     {
-        case "Op_Dodaj":
+        case 'Op_Dodaj':
             std::cout << "+";
         break;
 
-        case "Op_Odejmij":
+        case 'Op_Odejmij':
             std::cout << "-";
         break;
 
-        case "Op_Mnoz":
+        case 'Op_Mnoz':
             std::cout << "*";
         break;
 
-        case "Op_Dziel":
+        case 'Op_Dziel':
             std::cout << "/";
         break;
     }
@@ -37,19 +37,19 @@ LZespolona Oblicz(WyrazenieZesp  WyrZ)
 
     switch(WyrZ.Op)
     {
-        case "Op_Dodaj":
+        case 'Op_Dodaj':
             Wynik = WyrZ.Arg1 + WyrZ.Arg2;
         break;
 
-        case "Op_Odejmij":
+        case 'Op_Odejmij':
             Wynik = WyrZ.Arg1 - WyrZ.Arg2;
         break;
 
-        case "Op_Mnoz":
+        case 'Op_Mnoz':
             Wynik = WyrZ.Arg1 * WyrZ.Arg2;
         break;
 
-        case "Op_Dziel":
+        case 'Op_Dziel':
             Wynik = WyrZ.Arg1 / WyrZ.Arg2;
         break;
     }

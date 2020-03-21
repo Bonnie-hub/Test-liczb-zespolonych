@@ -81,26 +81,76 @@ LZespolona utworz(int re, int im)
     return Wynik;
  }
 
-bool wczytaj(LZespolona &in)
+/*bool wczytaj(LZespolona &in)
 {
   char znak;
-  cin>>znak;
+  std::cin>>znak;
 
   if(znak != ")") return false;
     
-  cin>>in.re;
-  cin>>in.im;
-  cin>>znak;
+  std::cin>>in.re;
+  std::cin>>in.im;
+  std::cin>>znak;
 
   if(znak != "i") return false;
     
-  cin>>znak;
+  std::cin>>znak;
 
   if(znak != ")") return false;
     
   return true;
 }
+*/
 
+std::istream & operator >> (std::istream & str, LZespolona &in)
+{
+  char znak;
+  str>>znak;
+
+  if(znak != '(') {
+    str.setstate(std::ios::failbit);
+  };
+
+  str>>in.re;
+  str>>in.im;
+  str>>znak;
+
+  if(znak != 'i') {
+    str.setstate(std::ios::failbit);
+  };
+    
+  str>>znak;
+  
+  if(znak != ')') {
+    str.setstate(std::ios::failbit);
+  };
+}
+
+std::istream & operator << (std::istream & str, LZespolona &out)
+{
+  char znak;
+  str>>znak;
+
+  if(znak != '(') {
+    str.setstate(std::ios::failbit);
+  };
+
+  str>>out.re;
+  str>>out.im;
+  str>>znak;
+
+  if(znak != 'i') {
+    str.setstate(std::ios::failbit);
+  };
+    
+  str>>znak;
+  
+  if(znak != ')') {
+    str.setstate(std::ios::failbit);
+  };
+}
+
+/*
 bool wczytaj(std::istream &str, LZespolona &in)
 {
   char znak;
@@ -120,3 +170,4 @@ bool wczytaj(std::istream &str, LZespolona &in)
     
   return true;
 }
+*/
