@@ -77,6 +77,11 @@ bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char *sNazwaTestu )
     UstawTest(wskBazaTestu,TestLatwy,sizeof(TestLatwy)/sizeof(WyrazenieZesp));
     return true;
   }
+
+  if (!strcmp(sNazwaTestu,"trudny")) {
+    UstawTest(wskBazaTestu,TestLatwy,sizeof(TestTrudny)/sizeof(WyrazenieZesp));
+    return true;
+  }
   /*
    * Analogicznie zrob inicjalizacje dla testu trudne
    */
@@ -84,8 +89,6 @@ bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char *sNazwaTestu )
   cerr << "Otwarcie testu '" << sNazwaTestu << "' nie powiodlo sie." << endl;
   return false;
 }
-
-
 
 /*!
  * Funkcja udostepnia nastepne pytania o ile jest odpowiednia ich ilosc.
