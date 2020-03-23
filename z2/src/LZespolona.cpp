@@ -66,11 +66,6 @@ double modul(LZespolona ZE)
   return sqrt(pow(ZE.re, 2) + pow(ZE.im, 2));
 }
 
-void wyswietl(LZespolona ZE)
-{
-  std::cout << "(" << ZE.re << std::showpos << ZE.im << std::noshowpos << "i)";
-}
-
 LZespolona utworz(int re, int im)
 {
   LZespolona Wynik;
@@ -79,6 +74,14 @@ LZespolona utworz(int re, int im)
   Wynik.im = im;
     
     return Wynik;
+ }
+
+ bool operator == (LZespolona &Skl1, LZespolona &Skl2)
+ {
+  if(Skl1.re == Skl2.re && Skl1.im == Skl2.im)
+    return true;
+  else
+    return false;
  }
 
 std::istream & operator >> (std::istream & str, LZespolona &in)

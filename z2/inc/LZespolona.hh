@@ -27,12 +27,10 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
 LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2);
 LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2);
 LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2);
+bool operator == (LZespolona &Skl1, LZespolona &Skl2);
 LZespolona utworz(double re, double im);
 std::ostream & operator << (std::ostream & str, LZespolona &out);
 std::istream & operator >> (std::istream & str, LZespolona &in);
-//bool wczytaj(LZespolona &in);
-//bool wczytaj(std::istream &str, LZespolona &in);
-void wyswietl(LZespolona ZE);
 double modul(LZespolona ZE);
 LZespolona sprzezenie(LZespolona ZE);
 
