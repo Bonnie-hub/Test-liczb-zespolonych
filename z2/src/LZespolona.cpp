@@ -84,6 +84,14 @@ LZespolona utworz(int re, int im)
     return false;
  }
 
+ bool operator != (LZespolona &Skl1, LZespolona &Skl2)
+ {
+   if(Skl1.re != Skl2.re || Skl1.im != Skl2.im)
+    return false;
+  else
+    return true;
+ }
+
 std::istream & operator >> (std::istream & str, LZespolona &in)
 {
   char znak;
