@@ -5,9 +5,9 @@
  * Tu nalezy zdefiniowac funkcje, ktorych zapowiedzi znajduja sie
  * w pliku naglowkowym.
  */
-void Wyswietl(WyrazenieZesp  WyrZ)
+void operator << (std::ostream & str, WyrazenieZesp WyrZ)
 {
-    std::cout << "(" << WyrZ.Arg1.re << std::showpos << WyrZ.Arg1.im << std::noshowpos << "i)";
+    std::str << "(" << WyrZ.Arg1.re << WyrZ.Arg1.im << "i)";
 
     switch(WyrZ.Op)
     {
@@ -28,7 +28,7 @@ void Wyswietl(WyrazenieZesp  WyrZ)
         break;
     }
 
-    std::cout << "(" << WyrZ.Arg2.re << WyrZ.Arg2.im << "i)";
+    std::str << "(" << WyrZ.Arg2.re << WyrZ.Arg2.im << "i)";
 }
 
 LZespolona Oblicz(WyrazenieZesp  WyrZ)
