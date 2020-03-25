@@ -38,27 +38,48 @@ LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2)
   return Wynik;
 }
 
-LZespolona operator / (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona operator / (LZespolona  Skl1,  LZespolona  Skl2) //Jeśli bedzie dzielenie przez zero funkcja zwraca zero. Ale czy to dobrze?
 {
   LZespolona Wynik, Licznik;
   double Mianownik;
 
+  //Pom = sprzezenie(Skl2);
   Licznik = Skl1 * sprzezenie(Skl2);
   Mianownik = pow(modul(Skl2),2);
+  //std::cout << "sprzezenie" << Pom << std::endl;
+  //std::cout << "licznik" << Licznik << std::endl;
+  //std::cout << "mianownik" << Mianownik << std::endl;
 
-  Wynik.re = Licznik.re/Mianownik;
-  Wynik.im = Licznik.im/Mianownik;
+  if(Mianownik == 0)
+  {
+    std::cerr << "Dzielenie przez zero" << std::endl;
+    Wynik.re = 0; 
+    Wynik.im = 0;
+    return Wynik;
+  }
+  
+  else
+  {
+    Wynik.re = Licznik.re/Mianownik;
+    Wynik.im = Licznik.im/Mianownik;
 
-  return Wynik;
+    return Wynik;
+  }
+  
+
+  
 }
 
 LZespolona sprzezenie(LZespolona ZE)
 {
   LZespolona Wynik;
-
-  Wynik.im = -ZE.im;
-
-  return Wynik;
+  if(ZE.im < 0.001 && ZE.im > -0.001)
+    return ZE;
+  else
+  {
+    Wynik.im = -ZE.im;
+    return Wynik;
+  }
 }
 
 double modul(LZespolona ZE)
@@ -76,7 +97,7 @@ LZespolona utworz(int re, int im)
     return Wynik;
  }
 
- bool operator == (LZespolona &Skl1, LZespolona &Skl2)
+ bool operator == (LZespolona Skl1, LZespolona Skl2)
  {
   if(Skl1.re == Skl2.re && Skl1.im == Skl2.im)
     return true;
@@ -84,12 +105,9 @@ LZespolona utworz(int re, int im)
     return false;
  }
 
- bool operator != (LZespolona &Skl1, LZespolona &Skl2)
+ bool operator != (LZespolona Skl1, LZespolona Skl2)
  {
-   if(Skl1.re != Skl2.re || Skl1.im != Skl2.im)
-    return false;
-  else
-    return true;
+    return !(Skl1 == Skl2);
  }
 
 std::istream & operator >> (std::istream & str, LZespolona &in)
@@ -99,7 +117,7 @@ std::istream & operator >> (std::istream & str, LZespolona &in)
 
   if(znak != '(') {
     str.setstate(std::ios::failbit);
-  };
+  }
 
   str>>in.re;
   str>>in.im;
@@ -107,16 +125,24 @@ std::istream & operator >> (std::istream & str, LZespolona &in)
 
   if(znak != 'i') {
     str.setstate(std::ios::failbit);
-  };
+  }
     
   str>>znak;
   
   if(znak != ')') {
     str.setstate(std::ios::failbit);
-  };
+  }
+  return str;
 }
 
 std::ostream & operator << (std::ostream & str, LZespolona &out)
 {
-  std::str << "(" << out.re << std::showpos << out.im << std::noshowpos << "i)";
+  str << "(" << out.re;
+  if(out.im >= 0)
+    str << "+" << out.im << "i)";
+
+  else
+    str << out.im << "i)";
+  
+  return str;
 }
