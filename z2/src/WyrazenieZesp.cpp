@@ -32,7 +32,7 @@ std::ostream & operator << (std::ostream & str, WyrazenieZesp WyrZ)
     return str;
 }
 
-LZespolona Oblicz(WyrazenieZesp  WyrZ)
+LZespolona Oblicz(WyrazenieZesp   WyrZ)
 {
     LZespolona Wynik;
 

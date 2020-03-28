@@ -40,13 +40,15 @@ int main(int argc, char **argv)
   while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe))
   {
     int licznik = 0;
+    LZespolona pom;
     cout << " Oblicz wartość danego wyrażenia zespolonego: ";
     cout << WyrZ_PytanieTestowe << endl;
-    //LZespolona Pom = Oblicz(WyrZ_PytanieTestowe);
-    //cout << Pom << endl;
+    pom = Oblicz(WyrZ_PytanieTestowe);
+    cout << pom;
     cin >> LZesp;
     
-    while((cin.fail() || LZesp != Oblicz(WyrZ_PytanieTestowe))&& licznik < 2)
+    while((cin.fail() || (sqrt(pow(LZesp.re - Oblicz(WyrZ_PytanieTestowe).re, 2)) > 0.0001) || 
+    (sqrt(pow(LZesp.im - Oblicz(WyrZ_PytanieTestowe).im, 2)) > 0.0001))&& licznik < 2)
     {
       if(cin.fail())
       {
@@ -68,7 +70,11 @@ int main(int argc, char **argv)
       cin >> LZesp;
     }
     if(licznik >= 2)
+    {
       dodaj_zla(stat);
+      cin.clear();
+      cin.ignore(10000,'\n');
+    }
     else
       dodaj_dobra(stat);
   }

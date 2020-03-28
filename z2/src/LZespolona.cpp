@@ -43,12 +43,8 @@ LZespolona operator / (LZespolona  Skl1,  LZespolona  Skl2) //Jeśli bedzie dzie
   LZespolona Wynik, Licznik;
   double Mianownik;
 
-  //Pom = sprzezenie(Skl2);
   Licznik = Skl1 * sprzezenie(Skl2);
   Mianownik = pow(modul(Skl2),2);
-  //std::cout << "sprzezenie" << Pom << std::endl;
-  //std::cout << "licznik" << Licznik << std::endl;
-  //std::cout << "mianownik" << Mianownik << std::endl;
 
   if(Mianownik == 0)
   {
@@ -62,7 +58,7 @@ LZespolona operator / (LZespolona  Skl1,  LZespolona  Skl2) //Jeśli bedzie dzie
   {
     Wynik.re = Licznik.re/Mianownik;
     Wynik.im = Licznik.im/Mianownik;
-
+    std::cout << Wynik.re << " " << Wynik.im << "i" << std::endl;
     return Wynik;
   }
   
@@ -73,7 +69,7 @@ LZespolona operator / (LZespolona  Skl1,  LZespolona  Skl2) //Jeśli bedzie dzie
 LZespolona sprzezenie(LZespolona ZE)
 {
   LZespolona Wynik;
-  if(ZE.im < 0.001 && ZE.im > -0.001)
+  if(ZE.im < 0.00000001 && ZE.im > -0.00000001)
     return ZE;
   else
   {
